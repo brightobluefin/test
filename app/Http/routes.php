@@ -10,15 +10,10 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
-Route::get('/', function () {
-  $fruit=['apple','banana','mango'];
-    //return view ('welcome',['fruit'=>$fruit]);
-    //return view('welcome',compact('fruit'));
-    //return view('welcome')->withPeople($fruit);
-    return view('welcome')->with('fruit',$fruit);
-});
-
+/*
 Route::get('/about',function(){
    return view('pages.about');
-});
+});*/
+
+Route::get('/','PageController@home');
+Route::get('/about','PageController@about');
