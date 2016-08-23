@@ -14,6 +14,10 @@
 Route::get('/about',function(){
    return view('pages.about');
 });*/
-
+/*
 Route::get('/','PageController@home');
 Route::get('/about','PageController@about');
+*/
+Route::get('cards','CardsController@index');
+
+Route::get('cards/{card}','CardsController@show');
