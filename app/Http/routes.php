@@ -26,7 +26,9 @@ Route::get('/about',function(){
 
   Route::patch('notes/{note}','NotesController@update');
 
+  Route::get('notes/{note}/delete','NotesController@delete');//delete notes
+
 //});
 
-// Route::get('/','PageController@home');
-// Route::get('/about','PageController@about');
+Route::get('/','PageController@home');
+Route::get('/about','PageController@about');
