@@ -14,12 +14,19 @@
 Route::get('/about',function(){
    return view('pages.about');
 });*/
-/*
-Route::get('/','PageController@home');
-Route::get('/about','PageController@about');
-*/
-Route::get('cards','CardsController@index');
+//Route::group(['middleware'=>['web']],function(){
 
-Route::get('cards/{card}','CardsController@show');
+  Route::get('cards','CardsController@index');
 
-Route::post('cards/{card}/notes','NotesController@store');
+  Route::get('cards/{card}','CardsController@show');
+
+  Route::post('cards/{card}/notes','NotesController@store');//creates note
+
+  Route::get('notes/{note}/edit','NotesController@edit');//edit notes
+
+  Route::patch('notes/{note}','NotesController@update');
+
+//});
+
+// Route::get('/','PageController@home');
+// Route::get('/about','PageController@about');

@@ -7,16 +7,22 @@
 
       <ul class="list-group">
         @foreach ($card->notes as $note)
-          <li class="list-group-item">{{$note->body}}</li>
+            <li class="list-group-item">
+              {{$note->body}}
+              <a class="pull-right"  href="#" >{{$note->user->username}}</a>
+            </li>
         @endforeach
       </ul>
 
       <h3>Add a Note</h3>
 
       <form  action="/cards/{{$card->id}}/notes" method="post">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        {{csrf_field()}}
+
+        <input type="hidden" name="user_id" value="1">
+
         <div class="form-group">
-            <textarea name="body" class="form-control"></textarea>
+            <textarea name="body" class="form-control">{{old('body')}}</textarea>
         </div>
 
         <div class="form-group">
@@ -24,6 +30,13 @@
         </div>
 
       </form>
+        @if(count($errors))
+          <ul>
+              @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+              @endforeach
+          </ul>
+        @endif
     </div>
   </div>
 

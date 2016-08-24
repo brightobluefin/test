@@ -22,11 +22,16 @@ class CardsController extends Controller
 
     public function show(Card $card)//$card shoud be the same variable that is passing in the route
     {
-      //return $card;
+      // $card= Card::with('notes.user')->find(1);
+      // return $card->notes[0]->user;
+      // return $card->notes;
 
       /*//fetch card by id
       $cards= Card::find($id);
       */
+      $card->load('notes.user');
+      // return $card;
+
       return view('cards.show',compact('card'));
 
     }
